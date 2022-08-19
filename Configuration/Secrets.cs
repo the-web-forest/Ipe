@@ -11,9 +11,9 @@ namespace Ipe.Configuration
     {
        public static void Configure(WebApplicationBuilder builder) {
 
-            var VaultUri = Environment.GetEnvironmentVariable("VAULT_URL");
+           var VaultUri = Environment.GetEnvironmentVariable("VAULT_URL");
 
-           if(VaultUri is not null)
+           if (VaultUri is not null)
            {
                 SecretClientOptions options = new SecretClientOptions()
                 {
