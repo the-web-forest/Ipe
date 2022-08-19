@@ -2,18 +2,18 @@
   <a href="https://www.webforest.eco/" target="blank"><img src="https://www.webforest.eco/images/logo.svg" width="200" alt="WebForest Logo" /></a>
 </p>
 
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=bugs)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Bonsai&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Bonsai)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=bugs)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 
-  <p align="center">Bonsai (Bonsai Tree) - Is an internal microservice that is our payment engine. There are no public endpoints and this microservice serves other microservices. Every donation to Web Forest ecosystem passes through Bonsai.</p>
+  <p align="center">Ipê (Tabebuia) - Is an exposed microservice that communicates with our main platform and allows our users to manage your account and your custom forest.</p>
   
 ## Philosophy 🌳
 Web Forest is a NGO, our goal is straightforward: We want to improve the world using technology and ecology.
