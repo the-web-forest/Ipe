@@ -1,0 +1,32 @@
+{
+  "profiles": {
+    "Ipe": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VAULT_URL": "https://webforestkeyvaultdev.vault.azure.net/"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7121;http://localhost:5121"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:27088",
+      "sslPort": 44339
+    }
+  }
+}
