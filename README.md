@@ -2,7 +2,7 @@
   <a href="https://www.webforest.eco/" target="blank"><img src="https://www.webforest.eco/images/logo.svg" width="200" alt="WebForest Logo" /></a>
 </p>
 
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipee&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
