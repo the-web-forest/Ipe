@@ -30,8 +30,8 @@ We currently use the following technologies:
 
 - [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet)
 - [Cosmos DB](https://azure.microsoft.com/pt-br/free/cosmos-db/search/?&ef_id=Cj0KCQjwkruVBhCHARIsACVIiOwtPRiQr3cYA3RBv2FgUn4GP419EUL0b1ZpPCkgyHRNIeq4VMoC8sUaAkpfEALw_wcB:G:s&OCID=AID2200154_SEM_Cj0KCQjwkruVBhCHARIsACVIiOwtPRiQr3cYA3RBv2FgUn4GP419EUL0b1ZpPCkgyHRNIeq4VMoC8sUaAkpfEALw_wcB:G:s&gclid=Cj0KCQjwkruVBhCHARIsACVIiOwtPRiQr3cYA3RBv2FgUn4GP419EUL0b1ZpPCkgyHRNIeq4VMoC8sUaAkpfEALw_wcB)
+- [Twilio SendGrid](https://www.twilio.com/pt-br/sendgrid/email-api)
 - [Microsoft Azure](https://azure.microsoft.com/pt-br/)
-
 
 ## Stay in touch 📧
 - Website - https://www.webforest.eco
