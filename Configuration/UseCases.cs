@@ -8,6 +8,7 @@ using Ipe.UseCases.PlantCustomizeUseCase;
 using Ipe.UseCases.PlantUseCase.CreatePlant;
 using Ipe.UseCases.Register;
 using Ipe.UseCases.SendVerificationEmail;
+using Ipe.UseCases.TreeUseCase.GetActiveTreeBiomes;
 using Ipe.UseCases.TreeUseCase.GetTreesByFilter;
 using Ipe.UseCases.UserPasswordChange;
 using Ipe.UseCases.UserPasswordReset;
@@ -30,6 +31,7 @@ namespace Ipe.Configuration
 			builder.Services.AddScoped<IUseCase<UserPasswordResetUseCaseInput, UserPasswordResetUseCaseOutput>, UserPasswordResetUseCase>();
 			builder.Services.AddScoped<IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput>, UserPasswordChangeUseCase>();
 			builder.Services.AddScoped<IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput>, GetUserInfoUseCase>();
+			builder.Services.AddScoped<IUseCase<GetActiveTreeBiomesUseCaseInput, GetActiveTreeBiomesUseCaseOutput>, GetActiveTreeBiomesUseCase>();
 
 			#region Plant
 			builder.Services.AddScoped<IUseCase<PlantUseCaseInput, PlantUseCaseOutput>, PlantUseCase>();
