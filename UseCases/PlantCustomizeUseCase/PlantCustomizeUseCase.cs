@@ -45,14 +45,14 @@ public class PlantCustomizeUseCase : IUseCase<PlantCustomizeUseCaseInput, PlantC
             throw new PlantCustomizePerformedException();
     }
 
-    private bool ValidateCustomizePerformed(Plant Plant)
+    private static bool ValidateCustomizePerformed(Plant Plant)
     {
         return !string.IsNullOrEmpty(Plant.Name) ||
             !string.IsNullOrEmpty(Plant.Message) ||
             (Plant.Hastags is not null && Plant.Hastags.Any());
     }
 
-    private bool ValidatePlantingUser(PlantCustomizeUseCaseInput Input, Plant Plant)
+    private static bool ValidatePlantingUser(PlantCustomizeUseCaseInput Input, Plant Plant)
     {
         return !Input.UserId.Equals(Plant.UserId);
     }
