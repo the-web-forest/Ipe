@@ -2,7 +2,7 @@
   <a href="https://www.webforest.eco/" target="blank"><img src="https://www.webforest.eco/images/logo.svg" width="200" alt="WebForest Logo" /></a>
 </p>
 
-[![Build Status](https://dev.azure.com/web-forest/Web%20Forest/_apis/build/status/Web%20Forest%20-%20Ip%C3%AA%20-%20DEV?branchName=develop)(https://dev.azure.com/web-forest/Web%20Forest/_build/latest?definitionId=6&branchName=develop)
+[![Build Status](https://dev.azure.com/web-forest/Web%20Forest/_apis/build/status/Web%20Forest%20-%20Ip%C3%AA%20-%20DEV?branchName=develop)](https://dev.azure.com/web-forest/Web%20Forest/_build/latest?definitionId=6&branchName=develop)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
