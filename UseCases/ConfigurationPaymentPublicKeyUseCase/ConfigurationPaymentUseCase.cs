@@ -19,13 +19,7 @@ public class ConfigurationPaymentUseCase : IUseCase<ConfigurationPaymentUseCaseI
 
         return Task.FromResult(new ConfigurationPaymentUseCaseOutput
         {
-            Settings = new List<ConfigurationSettingsUseCase>
-            {
-                new ConfigurationSettingsUseCase
-                {
-                    PaymentPublicKey = paymentPublicKey
-                }
-            }
+            PaymentPublicKey = paymentPublicKey
         });
     }
 }

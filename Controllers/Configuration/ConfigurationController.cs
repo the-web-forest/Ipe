@@ -17,9 +17,9 @@ public class ConfigurationController : Controller
         _logger = logger;
     }
 
-    [HttpPost("PaymentPublicKey")]
+    [HttpGet]
     [AllowAnonymous]
-    public async Task<ObjectResult> PlantCustomize(
+    public async Task<ObjectResult> PaymentPublicKey(
         [FromServices] IUseCase<ConfigurationPaymentUseCaseInput, ConfigurationPaymentUseCaseOutput> _configurationUseCase
     )
     {
