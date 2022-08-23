@@ -12,7 +12,7 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=the-web-forest_Ipe&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=the-web-forest_Ipe)
-[![Build Status](https://dev.azure.com/web-forest/Web%20Forest/_apis/build/status/Web%20Forest%20-%20Ip%C3%AA%20-%20DEV?branchName=develop)](https://dev.azure.com/web-forest/Web%20Forest/_build/latest?definitionId=6&branchName=develop)
+[![Build Status](https://dev.azure.com/web-forest/Web%20Forest/_apis/build/status/WF-Ipe-Dev?branchName=develop)](https://dev.azure.com/web-forest/Web%20Forest/_build/latest?definitionId=6&branchName=develop)
 
   <p align="center">Ipê (Tabebuia) - Is an exposed microservice that communicates with our main platform and allows our users to manage your account and your custom forest.</p>
   
