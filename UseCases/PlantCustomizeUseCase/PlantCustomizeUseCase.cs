@@ -33,7 +33,7 @@ public class PlantCustomizeUseCase : IUseCase<PlantCustomizeUseCaseInput, PlantC
         await _plantRepository.Update(Plant);
     }
 
-    private void ValidatePlantCustomize(PlantCustomizeUseCaseInput Input, Plant Plant)
+    private static void ValidatePlantCustomize(PlantCustomizeUseCaseInput Input, Plant Plant)
     {
         if (Plant is null)
             throw new InvalidPlantIdException();
