@@ -11,7 +11,7 @@ JWTConfiguration.Configure(builder);
 
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
-    builder.WithOrigins("https://*.webforest.eco").AllowAnyMethod().AllowAnyHeader();
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
 
 builder.Services.AddControllers();

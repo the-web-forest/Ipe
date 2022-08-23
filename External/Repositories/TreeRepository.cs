@@ -1,5 +1,6 @@
 ﻿using Ipe.Domain.Models;
 using Ipe.UseCases.Interfaces.Repositories;
+using Ipe.UseCases.TreeUseCase.GetActiveTreeBiomes;
 using Ipe.UseCases.TreeUseCase.GetTreesByFilter;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -56,6 +57,41 @@ namespace Ipe.External.Repositories
                 .ContinueWith(trees => new TreeAndTotal
                 {
                     Trees = trees.Result,
+                    TotalCount = total
+                });
+        }
+
+        public async Task<BiomeAndTotal> GetActiveTreeBiomes(GetActiveTreeBiomesUseCaseInput filter)
+        {
+            var query = _collection
+                .Aggregate()
+                .Match(tree => !tree.Deleted)
+                .Group(tree => tree.Biome, trees => new { Biome = trees.Key });
+
+            if (!String.IsNullOrEmpty(filter.Name))
+                query = query
+                    .Match(tree => !String.IsNullOrEmpty(tree.Biome) && tree.Biome.ToLower().Contains(filter.Name.Trim().ToLower()));
+
+            query = query
+                .SortBy(tree => tree.Biome);
+
+            long? total = null;
+            if (filter.RequiredTotal == true)
+                total = query.Count().FirstOrDefault().Count;
+
+            if (filter.Skip is not null)
+                query = query
+                    .Skip(filter.Skip ?? 0);
+
+            if (filter.Take is not null)
+                query = query
+                    .Limit(filter.Take ?? 0);
+
+            return await query
+                .ToListAsync()
+                .ContinueWith(biomes => new BiomeAndTotal
+                {
+                    Biomes = biomes.Result.Select(x => x.Biome),
                     TotalCount = total
                 });
         }
