@@ -2,10 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Production' " />
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UseCases\PlantUseCase - Cópia\**" />
+    <Content Remove="UseCases\PlantUseCase - Cópia\**" />
+    <EmbeddedResource Remove="UseCases\PlantUseCase - Cópia\**" />
+    <None Remove="UseCases\PlantUseCase - Cópia\**" />
+    <None Remove="Helpers\" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
@@ -19,4 +33,73 @@
     <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Controllers\User\" />
+    <None Remove="UseCases\" />
+    <None Remove="UseCases\Interfaces\" />
+    <None Remove="MongoDB.Bson" />
+    <None Remove="MongoDB.Driver.Core" />
+    <None Remove="MongoDB.Driver" />
+    <None Remove="Domain\" />
+    <None Remove="External\" />
+    <None Remove="External\Repositories\" />
+    <None Remove="BCrypt" />
+    <None Remove="BCrypt.Net-Next" />
+    <None Remove="System.IdentityModel.Tokens.Jwt" />
+    <None Remove="External\Services\" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="UseCases\Interfaces\Repositories\" />
+    <None Remove="Microsoft.AspNetCore.Authentication" />
+    <None Remove="Controllers\User\DTOS\" />
+    <None Remove="Domain\Models\" />
+    <None Remove="SendGrid" />
+    <None Remove="Controllers\New Folder\" />
+    <None Remove="Controllers\Cities\" />
+    <None Remove="Controllers\Email\DTOS\" />
+    <None Remove="Controllers\Home\" />
+    <None Remove="TinyCsvParser" />
+    <None Remove="CsvHelper" />
+    <None Remove="UseCases\User\Register\" />
+    <None Remove="UseCases\User\Login\" />
+    <None Remove="UseCases\User\GetUserInfo\" />
+    <None Remove="UseCases\User\ValidateEmail\" />
+    <None Remove="UseCases\User\UserPasswordChange\" />
+    <None Remove="UseCases\States\" />
+    <None Remove="UseCases\States\GetCitiesByState\" />
+    <None Remove="UseCases\User\CheckEmail\" />
+    <None Remove="UseCases\States\GetStates\" />
+    <None Remove="Azure.Core" />
+    <None Remove="Azure.Identity" />
+    <None Remove="Azure.Security.KeyVault.Secrets" />
+    <None Remove="Controllers\Plant\DTOs\" />
+    <None Remove="Controllers\Plant\Validators\" />
+    <None Remove="UseCases\Interfaces\Services\" />
+    <None Remove="External\Services\DTOs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\User\" />
+    <Folder Include="External\Services\" />
+    <Folder Include="Controllers\User\DTOS\" />
+    <Folder Include="Controllers\Email\" />
+    <Folder Include="Controllers\States\" />
+    <Folder Include="Controllers\Email\DTOS\" />
+    <Folder Include="Controllers\Home\" />
+    <Folder Include="UseCases\User\Register\" />
+    <Folder Include="UseCases\User\Login\" />
+    <Folder Include="UseCases\User\GetUserInfo\" />
+    <Folder Include="UseCases\User\ValidateEmail\" />
+    <Folder Include="UseCases\User\UserPasswordChange\" />
+    <Folder Include="UseCases\States\" />
+    <Folder Include="UseCases\States\GetCitiesByState\" />
+    <Folder Include="UseCases\User\CheckEmail\" />
+    <Folder Include="UseCases\States\GetStates\" />
+    <Folder Include="UseCases\Interfaces\Services\" />
+    <Folder Include="External\Services\DTOs\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" />
+  </ItemGroup>
 </Project>
