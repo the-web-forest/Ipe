@@ -14,9 +14,7 @@ namespace Ipe.Configuration
             var VaultUri = Environment.GetEnvironmentVariable("VAULT_URL");
 
             if (VaultUri == null)
-            {
-                throw new ArgumentNullException(nameof(VaultUri));
-            }
+                return;
 
             SecretClientOptions options = new SecretClientOptions()
             {
