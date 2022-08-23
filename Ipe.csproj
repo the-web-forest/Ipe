@@ -4,7 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Production' " />
@@ -13,13 +12,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="UseCases\PlantUseCase - Cópia\**" />
-    <Content Remove="UseCases\PlantUseCase - Cópia\**" />
-    <EmbeddedResource Remove="UseCases\PlantUseCase - Cópia\**" />
-    <None Remove="UseCases\PlantUseCase - Cópia\**" />
-    <None Remove="Helpers\" />
-  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
