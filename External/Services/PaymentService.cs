@@ -1,11 +1,8 @@
-﻿using System;
-using EllipticCurve.Utils;
-using System.Text;
+﻿using System.Text;
 using Ipe.UseCases.Interfaces.Services;
 using System.Net;
 using System.Text.Json;
 using Ipe.UseCases;
-using System.Net.Http;
 using Ipe.External.Services.DTOs;
 
 namespace Ipe.External.Services

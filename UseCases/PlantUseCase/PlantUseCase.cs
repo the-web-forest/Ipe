@@ -52,7 +52,7 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
                     UpdateOrderSucess(Order, PaymentResult),
                     HandleFirstPlant(User),
                     CreatePlant(Order),
-                    _emailService.SendPlantSuccessEmail(User.Email, User.Name)
+                    _emailService.SendPlantSuccessEmail(User.Email, User.Name, Order, Trees)
                 });
             }
             else
@@ -171,7 +171,6 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
                     {
                         Id = tree.Id,
                         Quantity = tree.Quantity
-
                     })
                     .ToList(),
                 CreatedAt = DateHelper.BrazilDateTimeNow(),

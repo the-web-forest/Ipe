@@ -7,7 +7,7 @@ namespace Ipe.Domain.Models
         [BsonElement("treeId")]
         public string Id { get; set; }
 
-        [BsonElement("name")]
+        [BsonElement("quantity")]
         public int Quantity { get; set; }
     }
 }

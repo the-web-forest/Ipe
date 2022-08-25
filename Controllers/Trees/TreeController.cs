@@ -58,7 +58,7 @@ public class TreeController : Controller
     }
 
     [HttpGet]
-    [Route("/Active-Biomes")]
+    [Route("Biomes/Active")]
     public async Task<ObjectResult> GetActiveTreeBiomes([FromQuery] ActiveBiomesSearchInput filter)
     {
         logger.LogInformation("Getting active tree biomes by filter");
