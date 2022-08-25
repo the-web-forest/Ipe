@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System.Drawing;
+using System.Globalization;
+using System.Web;
 using Ipe.Domain.Models;
 using Ipe.External.Services.DTOs;
 using Ipe.External.Services.EmailDTOs;
@@ -78,9 +80,9 @@ namespace Ipe.External.Services
 
 			var TemplateData = new SendEmailTemplateData
 			{
-				UserName = UserFirstName,
-				OrderId = Order.Id,
-				OrderPrice = string.Format("{0:0,0.00}", Order.Value),
+                UserName = UserFirstName,
+                OrderId = Order.Id,
+				OrderPrice = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", Order.Value),
 				Date = string.Format("{0: dd/MM/yyyy}", Order.CreatedAt),
 				Time = string.Format("{0: HH:mm:ss}", Order.CreatedAt),
 				Items = Items,
