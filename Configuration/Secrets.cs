@@ -1,6 +1,8 @@
-﻿using Azure.Core;
+﻿using System.Security.Policy;
+using Azure.Core;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Ipe.Domain.Models;
 
 namespace Ipe.Configuration;
 public static class Secrets
@@ -41,6 +43,7 @@ public static class Secrets
         var EmailTemplateFirstPlant = client.GetSecret("Trees-Email-Templates-FirstPlant").Value.Value;
         var EmailUrlsWelcome = client.GetSecret("Trees-Email-Urls-Welcome").Value.Value;
         var EmailUrlsPasswordReset = client.GetSecret("Trees-Email-Urls-PasswordReset").Value.Value;
+        var EmailUrlsMyForest = client.GetSecret("Trees-Email-Urls-My-Forest").Value.Value;
 
         var PaymentServiceUrl = client.GetSecret("Trees-Bonsai-Url").Value.Value;
         var PaymentToken = client.GetSecret("Trees-Ipe-Bonsai-X-Seed-Key").Value.Value;
@@ -63,6 +66,7 @@ public static class Secrets
         builder.Configuration["Email:Templates:FirstPlantEmail"] = EmailTemplateFirstPlant;
         builder.Configuration["Email:Urls:WelcomeEmail"] = EmailUrlsWelcome;
         builder.Configuration["Email:Urls:PasswordResetEmail"] = EmailUrlsPasswordReset;
+        builder.Configuration["Email:Urls:MyForest"] = EmailUrlsMyForest;
 
         builder.Configuration["Payment:BaseUrl"] = PaymentServiceUrl;
         builder.Configuration["Payment:Token"] = PaymentToken;

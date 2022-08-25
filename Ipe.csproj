@@ -70,6 +70,7 @@
     <None Remove="Controllers\Plant\Validators\" />
     <None Remove="UseCases\Interfaces\Services\" />
     <None Remove="External\Services\DTOs\" />
+    <None Remove="External\Services\EmailDTOs\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -92,6 +93,7 @@
     <Folder Include="UseCases\Interfaces\Services\" />
     <Folder Include="External\Services\DTOs\" />
     <Folder Include="Helpers\" />
+    <Folder Include="External\Services\EmailDTOs\" />
   </ItemGroup>
 
   <ItemGroup>

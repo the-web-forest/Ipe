@@ -1,4 +1,7 @@
 ﻿using System.Web;
+using Ipe.Domain.Models;
+using Ipe.External.Services.DTOs;
+using Ipe.External.Services.EmailDTOs;
 using Ipe.UseCases.Interfaces;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -53,14 +56,40 @@ namespace Ipe.External.Services
 			return Response.IsSuccessStatusCode;
 		}
 
-        public async Task<bool> SendPlantSuccessEmail(string Email, string Name)
+        public async Task<bool> SendPlantSuccessEmail(string Email, string Name, Order Order, List<Tree> Trees)
         {
             var UserFirstName = Name.Split(" ")[0];
             var WelcomeEmailTemplateId = _configuration["Email:Templates:PlantSuccessEmail"];
             var From = new EmailAddress(_configuration["Email:FromEmail"], _configuration["Email:FromName"]);
-            var To = new EmailAddress(Email, Name);
-            var Message = MailHelper.CreateSingleTemplateEmail(From, To, WelcomeEmailTemplateId, null);
-            var Response = await _sendGridClient.SendEmailAsync(Message);
+            var To = new EmailAddress(Email, UserFirstName);
+
+			var Items = new List<SendEmailTemplateDataItem>();
+
+			Order.Trees.ForEach(Tree =>
+			{
+				var CurrentTree = Trees.Find(x => x.Id == Tree.Id);
+
+				Items.Add(new SendEmailTemplateDataItem
+				{
+					Quantity = Tree.Quantity.ToString(),
+					Name = CurrentTree is not null ? CurrentTree.Name : "Árvore",
+                });
+			});
+
+			var TemplateData = new SendEmailTemplateData
+			{
+				UserName = UserFirstName,
+				OrderId = Order.Id,
+				OrderPrice = string.Format("{0:0,0.00}", Order.Value),
+				Date = string.Format("{0: dd/MM/yyyy}", Order.CreatedAt),
+				Time = string.Format("{0: HH:mm:ss}", Order.CreatedAt),
+				Items = Items,
+				ForesUrl = _configuration["Email:Urls:MyForest"]
+            };
+
+            var Message = MailHelper.CreateSingleTemplateEmail(From, To, WelcomeEmailTemplateId, TemplateData);
+
+			var Response = await _sendGridClient.SendEmailAsync(Message);
             return Response.IsSuccessStatusCode;
         }
 
