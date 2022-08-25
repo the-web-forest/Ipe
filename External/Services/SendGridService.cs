@@ -78,11 +78,16 @@ namespace Ipe.External.Services
                 });
 			});
 
-			var TemplateData = new SendEmailTemplateData
+			var FormattedValue = Order.Value.ToString();
+            var FirstPart = FormattedValue[..^2];
+            var LastPart = FormattedValue[^2..];
+            var Double = Convert.ToDouble(FirstPart + "." + LastPart);
+
+            var TemplateData = new SendEmailTemplateData
 			{
                 UserName = UserFirstName,
                 OrderId = Order.Id,
-				OrderPrice = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", Order.Value),
+				OrderPrice = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", Double),
 				Date = string.Format("{0: dd/MM/yyyy}", Order.CreatedAt),
 				Time = string.Format("{0: HH:mm:ss}", Order.CreatedAt),
 				Items = Items,
