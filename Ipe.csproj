@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9ad28146-12a9-47b2-9c85-f687375f86cc</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Production' " />
@@ -71,6 +72,9 @@
     <None Remove="UseCases\Interfaces\Services\" />
     <None Remove="External\Services\DTOs\" />
     <None Remove="External\Services\EmailDTOs\" />
+    <None Remove="Google.Apis.Auth" />
+    <None Remove="UseCases\User\GoogleLogin\" />
+    <None Remove="UseCases\Interfaces\Services\Google\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,6 +98,8 @@
     <Folder Include="External\Services\DTOs\" />
     <Folder Include="Helpers\" />
     <Folder Include="External\Services\EmailDTOs\" />
+    <Folder Include="UseCases\User\GoogleLogin\" />
+    <Folder Include="UseCases\Interfaces\Services\Google\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,6 +22,9 @@ namespace Ipe.Domain.Models
 
 		[BsonElement("emailVerified")]
 		public bool EmailVerified { get; set; }
-	}
+
+        [BsonElement("origin")]
+        public string Origin { get; set; }
+    }
 }
 

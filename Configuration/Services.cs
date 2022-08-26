@@ -16,6 +16,7 @@ namespace Ipe.Configuration
 
 			builder.Services.AddSingleton<IEmailService, SendGridService>();
 			builder.Services.AddSingleton<IPaymentService, PaymentService>();
+			builder.Services.AddSingleton<IGoogleService, GoogleService>();
         }
 	}
 }

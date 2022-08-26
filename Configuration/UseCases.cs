@@ -4,6 +4,7 @@ using Ipe.UseCases.ConfigurationPaymentPublicKeyUseCase;
 using Ipe.UseCases.GetCitiesByState;
 using Ipe.UseCases.GetStates;
 using Ipe.UseCases.GetUserInfo;
+using Ipe.UseCases.GoogleLogin;
 using Ipe.UseCases.Login;
 using Ipe.UseCases.PlantCustomizeUseCase;
 using Ipe.UseCases.PlantUseCase.CreatePlant;
@@ -33,6 +34,7 @@ namespace Ipe.Configuration
 			builder.Services.AddScoped<IUseCase<UserRegisterUseCaseInput, UserRegisterUseCaseOutput>, UserRegisterUseCase>();
 			builder.Services.AddScoped<IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput>, UserPasswordChangeUseCase>();
 			builder.Services.AddScoped<IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput>, GetUserInfoUseCase>();
+            builder.Services.AddScoped<IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput>, GoogleLoginUseCase>();
             #endregion
 
             #region Trees

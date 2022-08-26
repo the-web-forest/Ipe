@@ -3,6 +3,7 @@ using Ipe.Controllers.User.DTOS;
 using Ipe.Domain.Errors;
 using Ipe.UseCases;
 using Ipe.UseCases.GetUserInfo;
+using Ipe.UseCases.GoogleLogin;
 using Ipe.UseCases.Login;
 using Ipe.UseCases.Register;
 using Ipe.UseCases.UserPasswordChange;
@@ -17,12 +18,14 @@ public class UserController : Controller
 {
 
     private readonly IUseCase<LoginUseCaseInput, LoginUseCaseOutput> _loginUseCase;
+    private readonly IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput> _googleLoginUseCase;
     private readonly IUseCase<UserRegisterUseCaseInput, UserRegisterUseCaseOutput> _registerUseCase;
     private readonly IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput> _userPasswordChangeUseCase;
     private readonly IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput> _getUserInfoUseCase;
 
     public UserController(
         IUseCase<LoginUseCaseInput, LoginUseCaseOutput> loginUseCase,
+        IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput> googleLoginUseCase,
         IUseCase<UserRegisterUseCaseInput, UserRegisterUseCaseOutput> registerUseCase,
         IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput> userPasswordChangeUseCase,
         IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput> getUserInfoUseCase
@@ -32,6 +35,7 @@ public class UserController : Controller
         _registerUseCase = registerUseCase;
         _userPasswordChangeUseCase = userPasswordChangeUseCase;
         _getUserInfoUseCase = getUserInfoUseCase;
+        _googleLoginUseCase = googleLoginUseCase;
     }
 
     [HttpGet]
@@ -75,6 +79,29 @@ public class UserController : Controller
         {
             return new BadRequestObjectResult(e.Data);
         } catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("Login/Google")]
+    public async Task<ObjectResult> GoogleLogin([FromBody] UserGoogleLoginInput Input)
+    {
+        try
+        {
+            var Data = await _googleLoginUseCase.Run(new GoogleLoginUseCaseInput
+            {
+               Token = Input.Token
+            });
+
+            return new ObjectResult(Data);
+        }
+        catch (BaseException e)
+        {
+            return new BadRequestObjectResult(e.Data);
+        }
+        catch (Exception e)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
         }
