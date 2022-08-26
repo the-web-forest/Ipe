@@ -50,7 +50,8 @@ namespace Ipe.UseCases.Register
                 Password = BCryptLib.HashPassword(Input.Password),
                 City = Input.City,
                 State = Input.State,
-                EmailVerified = false
+                EmailVerified = false,
+                Origin = Origins.WebForest.ToString()
             });
         }
 
