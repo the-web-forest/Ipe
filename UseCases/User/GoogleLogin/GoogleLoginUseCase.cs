@@ -57,7 +57,7 @@ namespace Ipe.UseCases.GoogleLogin
             {
                 Email = GoogleUser.Email,
                 Name = GoogleUser.Name,
-                Password = BCryptLib.HashPassword(GoogleUser.AtHash),
+                Password = BCryptLib.HashPassword(new Random().Next().ToString()),
                 City = "",
                 State = "",
                 EmailVerified = true,
