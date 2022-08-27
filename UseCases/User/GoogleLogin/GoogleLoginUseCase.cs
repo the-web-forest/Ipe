@@ -46,6 +46,12 @@ namespace Ipe.UseCases.GoogleLogin
                 User = await _userRepository.GetByEmail(GoogleUser.Email);
             }
 
+            if (User.EmailVerified is false)
+            {
+                await UpdateUserWithGoogleData(GoogleUser, User);
+                User = await _userRepository.GetByEmail(GoogleUser.Email);
+            }
+
             ValidateUser(GoogleUser, User);
 
             return BuildResponse(User);
@@ -64,7 +70,6 @@ namespace Ipe.UseCases.GoogleLogin
                 Origin = Origins.Google.ToString()
             });
         }
-
 
         private static void ValidateUser(GoogleUserResponse GoogleUser, User User)
         {
@@ -93,5 +98,11 @@ namespace Ipe.UseCases.GoogleLogin
             };
         }
 
+        private async Task UpdateUserWithGoogleData(GoogleUserResponse GoogleUser, User User)
+        {
+            User.EmailVerified = true;
+            User.Origin = Origins.Google.ToString();
+            await _userRepository.Update(User);
+        }
     }
 }
