@@ -51,7 +51,7 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
                 {
                     UpdateOrderSucess(Order, PaymentResult),
                     HandleFirstPlant(User),
-                    CreatePlant(Order),
+                    CreatePlant(Order, Trees),
                     _emailService.SendPlantSuccessEmail(User.Email, User.Name, Order, Trees)
                 });
             }
@@ -98,13 +98,21 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
             await _orderRepository.Update(order);
         }
 
-        private async Task CreatePlant(Order order)
+        private async Task CreatePlant(Order order, List<Tree> Trees)
         {
 
             var TreesToPlant = new List<Plant>();
 
             foreach(var Tree in order.Trees)
             {
+
+                var CurrentTree = Trees.Find(x => x.Id == Tree.Id);
+
+                if (CurrentTree is null)
+                {
+                    return;
+                }
+
                 for(var i = 0; i< Tree.Quantity; i++)
                 {
                     TreesToPlant.Add(new Plant {
@@ -113,6 +121,11 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
                          TreeId = Tree.Id,
                          Name = null,
                          Message = null,
+                         Species = CurrentTree.Name,
+                         Biome = CurrentTree.Biome,
+                         Value = CurrentTree.Value,
+                         Image = CurrentTree.Image,
+                         Description = CurrentTree.Description,
                          Hastags = new List<string>(),
                     });
                 }

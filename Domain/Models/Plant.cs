@@ -19,6 +19,21 @@ namespace Ipe.Domain.Models
         [BsonElement("message")]
         public string? Message { get; set; }
 
+        [BsonElement("biome")]
+        public string Biome { get; set; }
+
+        [BsonElement("species")]
+        public string Species { get; set; }
+
+        [BsonElement("image")]
+        public string Image { get; set; }
+
+        [BsonElement("description")]
+        public string Description { get; set; }
+
+        [BsonElement("value")]
+        public double Value { get; set; }
+
         [BsonElement("hastags")]
         public List<string> Hastags { get; set; }
     }
