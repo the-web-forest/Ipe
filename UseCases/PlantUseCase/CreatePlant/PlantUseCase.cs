@@ -209,9 +209,7 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
             if (Trees is null || !Trees.Any())
                 return true;
 
-            return Trees.Any(tree => tree.Deleted == true);
-        }
-
-      
+            return Trees.Any(tree => tree.Deleted);
+        }     
     }
 }
