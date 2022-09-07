@@ -2,6 +2,7 @@
 using Ipe.UseCases.CheckEmail;
 using Ipe.UseCases.ConfigurationPaymentPublicKeyUseCase;
 using Ipe.UseCases.GetCitiesByState;
+using Ipe.UseCases.GetPlantDetailUseCase;
 using Ipe.UseCases.GetStates;
 using Ipe.UseCases.GetUserInfo;
 using Ipe.UseCases.GoogleLogin;
@@ -50,6 +51,7 @@ namespace Ipe.Configuration
 			#region Plant
 			builder.Services.AddScoped<IUseCase<PlantUseCaseInput, PlantUseCaseOutput>, PlantUseCase>();
 			builder.Services.AddScoped<IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput>, PlantCustomizeUseCase>();
+			builder.Services.AddScoped<IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput>, GetPlantDetailUseCase>();
             #endregion
 
             #region Configuration

@@ -1,6 +1,8 @@
 ﻿using Ipe.Controllers.Plant.DTOs;
 using Ipe.Domain.Errors;
+using Ipe.Domain.Models;
 using Ipe.UseCases;
+using Ipe.UseCases.GetPlantDetailUseCase;
 using Ipe.UseCases.PlantCustomizeUseCase;
 using Ipe.UseCases.PlantUseCase.CreatePlant;
 using Microsoft.AspNetCore.Authorization;
@@ -15,10 +17,18 @@ namespace Ipe.Controllers.Plant;
 public class PlantController : Controller
 {
     private readonly ILogger<PlantController> _logger;
+    private readonly IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput> _customizePlantUseCase;
+    private readonly IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput> _getPlantDetailUseCase;
 
-    public PlantController(ILogger<PlantController> logger)
+
+    public PlantController(ILogger<PlantController> logger,
+        IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput> customizePlantUseCase,
+        IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput> getPlantDetailUseCase
+        )
     {
         _logger = logger;
+        _customizePlantUseCase = customizePlantUseCase;
+        _getPlantDetailUseCase = getPlantDetailUseCase;
     }
 
     [HttpPost]
@@ -60,12 +70,10 @@ public class PlantController : Controller
 
     [HttpPost("Customize")]
     public async Task<ObjectResult> PlantCustomize(
-        [FromBody] PlantCustomizeInput Input,
-        [FromServices] IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput> _customizePlantUseCase
+        [FromBody] PlantCustomizeInput Input
     )
     {
         string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
         _logger.LogInformation("Customize plant order for User => {UserId}", userId);
 
         try
@@ -93,5 +101,35 @@ public class PlantController : Controller
         {
             return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
         }
+    }
+
+    [HttpGet("{plantId}")]
+    public async Task<ObjectResult> GetPlantDetail(string plantId)
+    {
+        string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        _logger.LogInformation("Getting Plant Details For The User => {UserId}", UserId);
+        _logger.LogInformation("Getting Plant Details For The Plant => {PlantId}", plantId);
+
+        try
+        {
+            var Data = await _getPlantDetailUseCase
+                .Run(new GetPlantDetailUseCaseInput
+                {
+                    UserId = UserId,
+                    PlantId = plantId
+                });
+
+            return new ObjectResult(Data);
+        }
+        catch (BaseException e)
+        {
+            return new BadRequestObjectResult(e.Data);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+
     }
 }

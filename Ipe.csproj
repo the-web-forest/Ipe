@@ -75,6 +75,7 @@
     <None Remove="Google.Apis.Auth" />
     <None Remove="UseCases\User\GoogleLogin\" />
     <None Remove="UseCases\Interfaces\Services\Google\" />
+    <None Remove="UseCases\GetPlantDetailUseCase\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,6 +101,7 @@
     <Folder Include="External\Services\EmailDTOs\" />
     <Folder Include="UseCases\User\GoogleLogin\" />
     <Folder Include="UseCases\Interfaces\Services\Google\" />
+    <Folder Include="UseCases\GetPlantDetailUseCase\" />
   </ItemGroup>
 
   <ItemGroup>
