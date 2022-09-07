@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Ipe.UseCases.GetPlantDetailUseCase
+namespace Ipe.UseCases.PlantUseCase.GetPlantDetailUseCase
 {
     public class GetPlantDetailUseCaseOutput
     {

@@ -1,8 +1,5 @@
-﻿namespace Ipe.Domain.Models
+﻿namespace Ipe.Domain.Models;
+public class BiomeAndTotal : ListReturnModel
 {
-    public class BiomeAndTotal
-    {
-        public IEnumerable<string>? Biomes { get; set; }
-        public long? TotalCount { get; set; }
-    }
+    public IEnumerable<string>? Biomes { get; set; }
 }

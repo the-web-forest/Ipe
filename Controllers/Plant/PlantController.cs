@@ -1,10 +1,10 @@
 ﻿using Ipe.Controllers.Plant.DTOs;
 using Ipe.Domain.Errors;
-using Ipe.Domain.Models;
 using Ipe.UseCases;
-using Ipe.UseCases.GetPlantDetailUseCase;
-using Ipe.UseCases.PlantCustomizeUseCase;
 using Ipe.UseCases.PlantUseCase.CreatePlant;
+using Ipe.UseCases.PlantUseCase.CustomizePlant;
+using Ipe.UseCases.PlantUseCase.GetActiveTreeBiomes;
+using Ipe.UseCases.PlantUseCase.GetPlantDetailUseCase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -131,5 +131,40 @@ public class PlantController : Controller
             return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
         }
 
+    }
+
+    [HttpGet]
+    public async Task<ObjectResult> GetPlants(
+        [FromQuery] PlantSearchInput filter,
+        [FromServices] IUseCase<GetActivePlantUseCaseInput, GetActivePlantUseCaseOutput> _getPlantUseCase
+    )
+    {
+        string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        _logger.LogInformation("Get plants by filter for User => {UserId}", userId);
+
+        try
+        {
+            var plants = await _getPlantUseCase
+                .Run(new GetActivePlantUseCaseInput
+                {
+                    UserId = userId,
+                    Name = filter.Name,
+                    Biome = filter.Biome,
+                    Species = filter.Species,
+                    RequiredTotal = filter.RequiredTotal,
+                    Skip = filter.Skip,
+                    Take = filter.Take
+                });
+
+            return new ObjectResult(plants);
+        }
+        catch (BaseException e)
+        {
+            return new BadRequestObjectResult(e.Data);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
     }
 }

@@ -101,10 +101,12 @@
     <Folder Include="External\Services\EmailDTOs\" />
     <Folder Include="UseCases\User\GoogleLogin\" />
     <Folder Include="UseCases\Interfaces\Services\Google\" />
-    <Folder Include="UseCases\GetPlantDetailUseCase\" />
+    <Folder Include="UseCases\PlantUseCase\GetPlantDetailUseCase\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>
