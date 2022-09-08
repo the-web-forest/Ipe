@@ -50,6 +50,7 @@ public static class Secrets
         var PaymentPublicKey = client.GetSecret("Trees-Payment-Public-Key").Value.Value;
 
         var GoogleLoginUrl = client.GetSecret("Trees-Google-Url").Value.Value;
+        var GoogleLoginClientId = client.GetSecret("Trees-Google-Client-Id").Value.Value;
 
         builder.Configuration["Database:ConnectionString"] = DatabaseConnectionString;
         builder.Configuration["Database:Name"] = DatabaseName;
@@ -74,6 +75,7 @@ public static class Secrets
         builder.Configuration["Payment:Token"] = PaymentToken;
         builder.Configuration["Payment:PublicKey"] = PaymentPublicKey;
 
+        builder.Configuration["Google:ClientID"] = GoogleLoginClientId;
         builder.Configuration["Google:Login:Url"] = GoogleLoginUrl;
     }
 }

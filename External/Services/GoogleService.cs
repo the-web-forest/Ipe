@@ -13,6 +13,7 @@ namespace Ipe.External.Services
     public class GoogleService: IGoogleService
     {
         private readonly string GoogleAuthUrl;
+        private readonly string GoogleClientId;
         private readonly IHttpClientFactory _httpClientFactory;
 
 
@@ -20,6 +21,7 @@ namespace Ipe.External.Services
         {
             _httpClientFactory = httpClientFactory;
             GoogleAuthUrl = configuration["Google:Login:Url"];
+            GoogleClientId = configuration["Google:ClientID"];
         }
 
         public async Task<GoogleUserResponse> GetUserInfoByGoogleToken(string GoogleToken)
@@ -37,10 +39,17 @@ namespace Ipe.External.Services
 
             var User = JsonSerializer.Deserialize<GoogleUserResponse>(HttpResponse.Content.ReadAsStringAsync().Result);
 
-            if (User is not null)
+            if (User is null)
             {
-                GoogleUser = User;
+                return GoogleUser;
             }
+
+            if (User.Aud != GoogleClientId || User.Azp != GoogleClientId)
+            {
+                return GoogleUser;
+            }
+
+            GoogleUser = User;
 
             return GoogleUser;
         }
