@@ -1,4 +1,4 @@
-﻿namespace Ipe.UseCases.PlantCustomizeUseCase;
+﻿namespace Ipe.UseCases.PlantUseCase.CustomizePlant;
 public class PlantCustomizeUseCaseInput
 {
     public string UserId { get; set; }

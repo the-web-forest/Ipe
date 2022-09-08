@@ -1,8 +1,5 @@
-﻿namespace Ipe.Domain.Models
+﻿namespace Ipe.Domain.Models;
+public class TreeAndTotal : ListReturnModel
 {
-    public class TreeAndTotal
-    {
-        public IEnumerable<Tree> Trees { get; set; }
-        public long? TotalCount { get; set; }
-    }
+    public IEnumerable<Tree> Trees { get; set; }
 }

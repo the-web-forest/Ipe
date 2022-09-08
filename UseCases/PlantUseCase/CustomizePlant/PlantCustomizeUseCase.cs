@@ -2,7 +2,7 @@
 using Ipe.Domain.Models;
 using Ipe.UseCases.Interfaces.Repositories;
 
-namespace Ipe.UseCases.PlantCustomizeUseCase;
+namespace Ipe.UseCases.PlantUseCase.CustomizePlant;
 public class PlantCustomizeUseCase : IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput>
 {
     private readonly IPlantRepository _plantRepository;
@@ -49,7 +49,7 @@ public class PlantCustomizeUseCase : IUseCase<PlantCustomizeUseCaseInput, PlantC
     {
         return !string.IsNullOrEmpty(Plant.Name) ||
             !string.IsNullOrEmpty(Plant.Message) ||
-            (Plant.Hastags is not null && Plant.Hastags.Any());
+            Plant.Hastags is not null && Plant.Hastags.Any();
     }
 
     private static bool ValidatePlantingUser(PlantCustomizeUseCaseInput Input, Plant Plant)

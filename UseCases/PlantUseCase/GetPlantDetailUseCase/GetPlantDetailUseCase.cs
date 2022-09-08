@@ -1,9 +1,9 @@
 ﻿using Ipe.Domain.Errors;
 using Ipe.Domain.Models;
 using Ipe.UseCases.Interfaces.Repositories;
-using Ipe.UseCases.GetPlantDetailUseCase;
+using Ipe.UseCases.PlantUseCase.GetPlantDetailUseCase;
 
-namespace Ipe.UseCases.GetPlantDetailUseCase;
+namespace Ipe.UseCases.PlantUseCase.GetPlantDetailUseCase;
 public class GetPlantDetailUseCase : IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput>
 {
     private readonly IPlantRepository _plantRepository;
