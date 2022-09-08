@@ -19,16 +19,19 @@ public class PlantController : Controller
     private readonly ILogger<PlantController> _logger;
     private readonly IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput> _customizePlantUseCase;
     private readonly IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput> _getPlantDetailUseCase;
+    private readonly IUseCase<GetActivePlantUseCaseInput, GetActivePlantUseCaseOutput> _getPlantUseCase;
 
 
     public PlantController(ILogger<PlantController> logger,
         IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput> customizePlantUseCase,
-        IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput> getPlantDetailUseCase
+        IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput> getPlantDetailUseCase,
+        IUseCase<GetActivePlantUseCaseInput, GetActivePlantUseCaseOutput> getPlantUseCase
         )
     {
         _logger = logger;
         _customizePlantUseCase = customizePlantUseCase;
         _getPlantDetailUseCase = getPlantDetailUseCase;
+        _getPlantUseCase = getPlantUseCase;
     }
 
     [HttpPost]
@@ -135,8 +138,7 @@ public class PlantController : Controller
 
     [HttpGet]
     public async Task<ObjectResult> GetPlants(
-        [FromQuery] PlantSearchInput filter,
-        [FromServices] IUseCase<GetActivePlantUseCaseInput, GetActivePlantUseCaseOutput> _getPlantUseCase
+        [FromQuery] PlantSearchInput filter
     )
     {
         string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
