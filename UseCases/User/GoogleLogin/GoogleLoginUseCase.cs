@@ -52,6 +52,12 @@ namespace Ipe.UseCases.GoogleLogin
                 User = await _userRepository.GetByEmail(GoogleUser.Email);
             }
 
+            if(GoogleUser.Picture is not null && GoogleUser.Picture != "" && GoogleUser.Picture != User.Photo)
+            {
+                User.Photo = GoogleUser.Picture;
+                await UpdateUserPhoto(User);
+            }
+
             ValidateUser(GoogleUser, User);
 
             return BuildResponse(User);
@@ -67,7 +73,8 @@ namespace Ipe.UseCases.GoogleLogin
                 City = "",
                 State = "",
                 EmailVerified = true,
-                Origin = Origins.Google.ToString()
+                Origin = Origins.Google.ToString(),
+                Photo = GoogleUser.Picture
             });
         }
 
@@ -83,6 +90,11 @@ namespace Ipe.UseCases.GoogleLogin
                 throw new UnverifiedEmailException();
         }
 
+        private async Task UpdateUserPhoto(User User)
+        {
+            await _userRepository.Update(User);
+        }
+
         private LoginUseCaseOutput BuildResponse(User User)
         {
             return new LoginUseCaseOutput
@@ -93,7 +105,8 @@ namespace Ipe.UseCases.GoogleLogin
                 {
                     Id = User.Id,
                     Email = User.Email,
-                    Name = User.Name
+                    Name = User.Name,
+                    Photo = User.Photo
                 }
             };
         }
