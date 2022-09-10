@@ -17,6 +17,7 @@ using Ipe.UseCases.TreeUseCase.GetTreesByFilter;
 using Ipe.UseCases.UserPasswordChange;
 using Ipe.UseCases.UserPasswordReset;
 using Ipe.UseCases.ValidateEmail;
+using Ipe.UseCases.Update;
 
 namespace Ipe.Configuration
 {
@@ -37,6 +38,7 @@ namespace Ipe.Configuration
 			builder.Services.AddScoped<IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput>, UserPasswordChangeUseCase>();
 			builder.Services.AddScoped<IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput>, GetUserInfoUseCase>();
             builder.Services.AddScoped<IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput>, GoogleLoginUseCase>();
+            builder.Services.AddScoped<IUseCase<UserUpdateUseCaseInput, UserUpdateUseCaseOutput>, UserUpdateUseCase>();
             #endregion
 
             #region Trees

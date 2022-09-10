@@ -6,6 +6,7 @@ using Ipe.UseCases.GetUserInfo;
 using Ipe.UseCases.GoogleLogin;
 using Ipe.UseCases.Login;
 using Ipe.UseCases.Register;
+using Ipe.UseCases.Update;
 using Ipe.UseCases.UserPasswordChange;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ public class UserController : Controller
     private readonly IUseCase<LoginUseCaseInput, LoginUseCaseOutput> _loginUseCase;
     private readonly IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput> _googleLoginUseCase;
     private readonly IUseCase<UserRegisterUseCaseInput, UserRegisterUseCaseOutput> _registerUseCase;
+    private readonly IUseCase<UserUpdateUseCaseInput, UserUpdateUseCaseOutput> _userUpdateUseCase;
     private readonly IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput> _userPasswordChangeUseCase;
     private readonly IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput> _getUserInfoUseCase;
 
@@ -28,7 +30,8 @@ public class UserController : Controller
         IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput> googleLoginUseCase,
         IUseCase<UserRegisterUseCaseInput, UserRegisterUseCaseOutput> registerUseCase,
         IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput> userPasswordChangeUseCase,
-        IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput> getUserInfoUseCase
+        IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput> getUserInfoUseCase,
+        IUseCase<UserUpdateUseCaseInput, UserUpdateUseCaseOutput> userUpdateUseCase
         )
     {
         _loginUseCase = loginUseCase;
@@ -36,6 +39,7 @@ public class UserController : Controller
         _userPasswordChangeUseCase = userPasswordChangeUseCase;
         _getUserInfoUseCase = getUserInfoUseCase;
         _googleLoginUseCase = googleLoginUseCase;
+        _userUpdateUseCase = userUpdateUseCase;
     }
 
     [HttpGet]
@@ -119,6 +123,33 @@ public class UserController : Controller
                 State = UserRegisterInput.State,
                 City = UserRegisterInput.City,
                 Password = UserRegisterInput.Password
+            });
+
+            return new OkObjectResult(data);
+        }
+        catch (BaseException e)
+        {
+            return new BadRequestObjectResult(e.Data);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+    [HttpPut]
+    [Authorize]
+    public async Task<ObjectResult> Update([FromBody] UserUpdateInput UserUpdateInput)
+    {
+        try
+        {
+            var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var data = await _userUpdateUseCase.Run(new UserUpdateUseCaseInput
+            {
+                Name = UserUpdateInput.Name,
+                State = UserUpdateInput.State,
+                City = UserUpdateInput.City,
+                Id = UserId
             });
 
             return new OkObjectResult(data);

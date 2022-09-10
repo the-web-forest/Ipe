@@ -76,6 +76,7 @@
     <None Remove="UseCases\User\GoogleLogin\" />
     <None Remove="UseCases\Interfaces\Services\Google\" />
     <None Remove="UseCases\GetPlantDetailUseCase\" />
+    <None Remove="UseCases\User\Update\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -102,6 +103,7 @@
     <Folder Include="UseCases\User\GoogleLogin\" />
     <Folder Include="UseCases\Interfaces\Services\Google\" />
     <Folder Include="UseCases\PlantUseCase\GetPlantDetailUseCase\" />
+    <Folder Include="UseCases\User\Update\" />
   </ItemGroup>
 
   <ItemGroup>

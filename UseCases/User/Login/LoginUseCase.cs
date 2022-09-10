@@ -59,6 +59,5 @@ namespace Ipe.UseCases.Login
                 }
             };
         }
-
     }
 }
