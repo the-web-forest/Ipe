@@ -27,7 +27,7 @@ namespace Ipe.UseCases.Update
         private User UpdateUser(UserUpdateUseCaseInput Input, User User)
         {
             User.Name = Input.Name;
-            User.City = Input.State;
+            User.City = Input.City;
             User.State = Input.State;
             return User;
         }
