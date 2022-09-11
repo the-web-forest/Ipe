@@ -48,9 +48,12 @@ public static class Secrets
         var PaymentServiceUrl = client.GetSecret("Trees-Bonsai-Url").Value.Value;
         var PaymentToken = client.GetSecret("Trees-Ipe-Bonsai-X-Seed-Key").Value.Value;
         var PaymentPublicKey = client.GetSecret("Trees-Payment-Public-Key").Value.Value;
+        var PortalConfiguration = client.GetSecret("Trees-Portal-Configuration").Value.Value;
 
         var GoogleLoginUrl = client.GetSecret("Trees-Google-Url").Value.Value;
         var GoogleLoginClientId = client.GetSecret("Trees-Google-Client-Id").Value.Value;
+
+
 
         builder.Configuration["Database:ConnectionString"] = DatabaseConnectionString;
         builder.Configuration["Database:Name"] = DatabaseName;
@@ -74,6 +77,7 @@ public static class Secrets
         builder.Configuration["Payment:BaseUrl"] = PaymentServiceUrl;
         builder.Configuration["Payment:Token"] = PaymentToken;
         builder.Configuration["Payment:PublicKey"] = PaymentPublicKey;
+        builder.Configuration["Portal:Configuration"] = PortalConfiguration;
 
         builder.Configuration["Google:ClientID"] = GoogleLoginClientId;
         builder.Configuration["Google:Login:Url"] = GoogleLoginUrl;

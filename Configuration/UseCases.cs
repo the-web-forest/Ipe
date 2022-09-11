@@ -59,7 +59,7 @@ namespace Ipe.Configuration
             #endregion
 
             #region Configuration
-            builder.Services.AddScoped<IUseCase<ConfigurationPaymentUseCaseInput, ConfigurationPaymentUseCaseOutput>, ConfigurationPaymentUseCase>();
+            builder.Services.AddScoped<IUseCase<GetConfigurationUseCaseInput, GetConfigurationUseCaseOutput>, GetConfigurationUseCase>();
             #endregion
         }
     }

@@ -11,24 +11,24 @@ namespace Ipe.Controllers.Configuration;
 public class ConfigurationController : Controller
 {
     private readonly ILogger<PlantController> _logger;
+    private readonly IUseCase<GetConfigurationUseCaseInput, GetConfigurationUseCaseOutput> _configurationUseCase;
 
-    public ConfigurationController(ILogger<PlantController> logger)
+    public ConfigurationController(ILogger<PlantController> logger, IUseCase<GetConfigurationUseCaseInput, GetConfigurationUseCaseOutput> configurationUseCase)
     {
         _logger = logger;
+        _configurationUseCase = configurationUseCase;
     }
 
     [HttpGet]
     [AllowAnonymous]
-    public async Task<ObjectResult> PaymentPublicKey(
-        [FromServices] IUseCase<ConfigurationPaymentUseCaseInput, ConfigurationPaymentUseCaseOutput> _configurationUseCase
-    )
+    public async Task<ObjectResult> PaymentPublicKey()
     {
-        _logger.LogInformation("Payment Public Key Requested");
+        _logger.LogInformation("Configuration Requested");
 
         try
         {
             var Data = await _configurationUseCase
-                .Run(new ConfigurationPaymentUseCaseInput());
+                .Run(new GetConfigurationUseCaseInput());
 
             return new ObjectResult(Data);
         }
