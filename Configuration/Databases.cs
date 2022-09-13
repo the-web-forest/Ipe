@@ -49,9 +49,7 @@ namespace Ipe.Configuration
 			var treeCollection = Database.GetCollection<Tree>(typeof(Tree).Name);
 			var indexOptions = new CreateIndexOptions();
 			var indexKeys = Builders<Tree>.IndexKeys.Ascending(x => x.CreatedAt);
-			var indexKeys = Builders<Tree>.IndexKeys.Ascending(x => x.CreatedAt).Ascending(x =>x.Name);
-			var indexKeys = Builders<Tree>.IndexKeys.Ascending(x => x.CreatedAt).Descending(x =>x.Name);
-            var indexModel = new CreateIndexModel<Tree>(indexKeys, indexOptions);
+			var indexModel = new CreateIndexModel<Tree>(indexKeys, indexOptions);
 			treeCollection.Indexes.CreateOne(indexModel);
 		}
 
