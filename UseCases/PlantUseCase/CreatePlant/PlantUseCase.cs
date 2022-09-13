@@ -47,13 +47,10 @@ namespace Ipe.UseCases.PlantUseCase.CreatePlant
 
             if(PaymentResult.Success)
             {
-                Task.WaitAll(new Task[]
-                {
-                    UpdateOrderSucess(Order, PaymentResult),
-                    HandleFirstPlant(User),
-                    CreatePlant(Order, Trees),
-                    _emailService.SendPlantSuccessEmail(User.Email, User.Name, Order, Trees)
-                });
+                await UpdateOrderSucess(Order, PaymentResult);
+                await HandleFirstPlant(User);
+                await CreatePlant(Order, Trees);
+                await _emailService.SendPlantSuccessEmail(User.Email, User.Name, Order, Trees);
             }
             else
             {
