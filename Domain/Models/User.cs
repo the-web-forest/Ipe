@@ -11,7 +11,10 @@ namespace Ipe.Domain.Models
 		[BsonElement("email")]
 		public string Email { get; set; }
 
-		[BsonElement("password")]
+        [BsonElement("photo")]
+        public string Photo { get; set; }
+
+        [BsonElement("password")]
 		public string Password { get; set; }
 
 		[BsonElement("city")]
@@ -22,6 +25,9 @@ namespace Ipe.Domain.Models
 
 		[BsonElement("emailVerified")]
 		public bool EmailVerified { get; set; }
-	}
+
+        [BsonElement("origin")]
+        public string Origin { get; set; }
+    }
 }
 

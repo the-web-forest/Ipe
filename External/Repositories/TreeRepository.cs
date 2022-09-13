@@ -20,25 +20,22 @@ namespace Ipe.External.Repositories
         {
             var query = _collection
                 .Aggregate()
-                .Match(tree => tree.Deleted == false)
-                .AppendStage<Tree>(new BsonDocument("$addFields", new BsonDocument("lowercaseName", new BsonDocument("$toLower", "$name"))));
-
+                .Match(tree => tree.Deleted == false);
+                
             if (!String.IsNullOrEmpty(filter.Biome))
                 query = query
-                    .AppendStage<Tree>(new BsonDocument("$addFields", new BsonDocument("lowercaseBiome", new BsonDocument("$toLower", "$biome"))))
-                    .Match(tree => !String.IsNullOrEmpty(tree.LowercaseBiome) && tree.LowercaseBiome.Contains(filter.Biome.Trim().ToLower()));
+                    .Match(tree => !String.IsNullOrEmpty(tree.Biome) && tree.Biome.ToLower().Contains(filter.Biome.Trim().ToLower()));
 
             if (!String.IsNullOrEmpty(filter.Description))
                 query = query
-                    .AppendStage<Tree>(new BsonDocument("$addFields", new BsonDocument("lowercaseDescription", new BsonDocument("$toLower", "$description"))))
-                    .Match(tree => !String.IsNullOrEmpty(tree.LowercaseDescription) && tree.LowercaseDescription.Contains(filter.Description.Trim().ToLower()));
+                    .Match(tree => !String.IsNullOrEmpty(tree.Description) && tree.Description.ToLower().Contains(filter.Description.Trim().ToLower()));
 
             if (!String.IsNullOrEmpty(filter.Name))
                 query = query
-                    .Match(tree => !String.IsNullOrEmpty(tree.LowercaseName) && tree.LowercaseName.Contains(filter.Name.Trim().ToLower()));
+                    .Match(tree => !String.IsNullOrEmpty(tree.Name) && tree.Name.ToLower().Contains(filter.Name.Trim().ToLower()));
 
             query = query
-                .AppendStage<Tree>(new BsonDocument("$sort", new BsonDocument { { "metadata.type", 1 }, { "lowercaseName", 1 } }));
+                .SortBy(tree => tree.Name);
 
             long? total = null;
             if (filter.RequiredTotal == true)

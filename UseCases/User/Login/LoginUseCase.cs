@@ -54,10 +54,10 @@ namespace Ipe.UseCases.Login
                 {
                     Id = User.Id,
                     Email = User.Email,
-                    Name = User.Name
+                    Name = User.Name,
+                    Photo = User.Photo
                 }
             };
         }
-
     }
 }

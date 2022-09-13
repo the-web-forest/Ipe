@@ -4,9 +4,12 @@ using Ipe.UseCases.ConfigurationPaymentPublicKeyUseCase;
 using Ipe.UseCases.GetCitiesByState;
 using Ipe.UseCases.GetStates;
 using Ipe.UseCases.GetUserInfo;
+using Ipe.UseCases.GoogleLogin;
 using Ipe.UseCases.Login;
-using Ipe.UseCases.PlantCustomizeUseCase;
+using Ipe.UseCases.PlantUseCase.GetPlantDetailUseCase;
 using Ipe.UseCases.PlantUseCase.CreatePlant;
+using Ipe.UseCases.PlantUseCase.CustomizePlant;
+using Ipe.UseCases.PlantUseCase.GetActiveTreeBiomes;
 using Ipe.UseCases.Register;
 using Ipe.UseCases.SendVerificationEmail;
 using Ipe.UseCases.TreeUseCase.GetActiveTreeBiomes;
@@ -14,10 +17,11 @@ using Ipe.UseCases.TreeUseCase.GetTreesByFilter;
 using Ipe.UseCases.UserPasswordChange;
 using Ipe.UseCases.UserPasswordReset;
 using Ipe.UseCases.ValidateEmail;
+using Ipe.UseCases.Update;
 
 namespace Ipe.Configuration
 {
-	public static class UseCases
+    public static class UseCases
 	{
 		public static void Configure(WebApplicationBuilder builder)
         {
@@ -33,6 +37,8 @@ namespace Ipe.Configuration
 			builder.Services.AddScoped<IUseCase<UserRegisterUseCaseInput, UserRegisterUseCaseOutput>, UserRegisterUseCase>();
 			builder.Services.AddScoped<IUseCase<UserPasswordChangeUseCaseInput, UserPasswordChangeUseCaseOutput>, UserPasswordChangeUseCase>();
 			builder.Services.AddScoped<IUseCase<GetUserInfoUseCaseInput, GetUserInfoUseCaseOutput>, GetUserInfoUseCase>();
+            builder.Services.AddScoped<IUseCase<GoogleLoginUseCaseInput, LoginUseCaseOutput>, GoogleLoginUseCase>();
+            builder.Services.AddScoped<IUseCase<UserUpdateUseCaseInput, UserUpdateUseCaseOutput>, UserUpdateUseCase>();
             #endregion
 
             #region Trees
@@ -48,10 +54,12 @@ namespace Ipe.Configuration
 			#region Plant
 			builder.Services.AddScoped<IUseCase<PlantUseCaseInput, PlantUseCaseOutput>, PlantUseCase>();
 			builder.Services.AddScoped<IUseCase<PlantCustomizeUseCaseInput, PlantCustomizeUseCaseOutput>, PlantCustomizeUseCase>();
+			builder.Services.AddScoped<IUseCase<GetPlantDetailUseCaseInput, GetPlantDetailUseCaseOutput>, GetPlantDetailUseCase>();
+            builder.Services.AddScoped<IUseCase<GetActivePlantUseCaseInput, GetActivePlantUseCaseOutput>, GetActivePlantUseCase>();
             #endregion
 
             #region Configuration
-            builder.Services.AddScoped<IUseCase<ConfigurationPaymentUseCaseInput, ConfigurationPaymentUseCaseOutput>, ConfigurationPaymentUseCase>();
+            builder.Services.AddScoped<IUseCase<GetConfigurationUseCaseInput, GetConfigurationUseCaseOutput>, GetConfigurationUseCase>();
             #endregion
         }
     }

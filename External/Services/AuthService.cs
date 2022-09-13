@@ -20,7 +20,6 @@ namespace Ipe.External.Services
 
         public string GenerateToken(User user, Roles Role)
         {
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
             var tokenDescriptor = new SecurityTokenDescriptor
