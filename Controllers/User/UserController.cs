@@ -120,8 +120,6 @@ public class UserController : Controller
             {
                 Name = UserRegisterInput.Name,
                 Email = UserRegisterInput.Email,
-                State = UserRegisterInput.State,
-                City = UserRegisterInput.City,
                 Password = UserRegisterInput.Password
             });
 

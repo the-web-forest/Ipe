@@ -70,8 +70,6 @@ namespace Ipe.UseCases.GoogleLogin
                 Email = GoogleUser.Email,
                 Name = GoogleUser.Name,
                 Password = BCryptLib.HashPassword(new Random().Next().ToString()),
-                City = "",
-                State = "",
                 EmailVerified = true,
                 Origin = Origins.Google.ToString(),
                 Photo = GoogleUser.Picture
