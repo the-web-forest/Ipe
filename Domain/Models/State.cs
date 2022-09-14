@@ -2,7 +2,8 @@
 
 namespace Ipe.Domain.Models
 {
-	public class State: Model
+    [BsonIgnoreExtraElements]
+    public class State: Model
 	{
 		[BsonElement("initials")]
 		public string Initials { get; set; }
