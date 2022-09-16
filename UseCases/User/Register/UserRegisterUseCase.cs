@@ -2,6 +2,7 @@
 using Ipe.Domain.Errors;
 using Ipe.Domain.Models;
 using Ipe.UseCases.Interfaces;
+using Ipe.UseCases.Interfaces.Repositories;
 using BCryptLib = BCrypt.Net.BCrypt;
 
 
@@ -12,16 +13,19 @@ namespace Ipe.UseCases.Register
         private readonly IUserRepository _userRepository;
         private readonly IMailVerificationRepository _mailVerificationRepository;
         private readonly IEmailService _emailService;
+        private readonly IPlantRepository _plantRepository;
 
         public UserRegisterUseCase(
             IUserRepository userRepository,
             IMailVerificationRepository mailVerificationRepository,
-            IEmailService emailService
+            IEmailService emailService,
+            IPlantRepository plantRepository
         )
         {
             _userRepository = userRepository;
             _mailVerificationRepository = mailVerificationRepository;
             _emailService = emailService;
+            _plantRepository = plantRepository;
         }
 
         public async Task<UserRegisterUseCaseOutput> Run(UserRegisterUseCaseInput Input)
@@ -30,6 +34,7 @@ namespace Ipe.UseCases.Register
             await CreateUser(Input);
             var UserRegistrationToken = await CreateMailVerificationRegister(Input);
             await SendWelcomeEmail(Input.Email, Input.Name, UserRegistrationToken);
+            await RecoveryTrees(Input.Email);
             return new UserRegisterUseCaseOutput();            
         }
 
@@ -51,6 +56,12 @@ namespace Ipe.UseCases.Register
                 EmailVerified = false,
                 Origin = Origins.WebForest.ToString()
             });
+        }
+
+        private async Task RecoveryTrees(string UserEmail)
+        {
+            var User = await _userRepository.GetByEmail(UserEmail);
+            await _plantRepository.RecoveryPlants(User.Id, User.Email);
         }
 
         private async Task<string> CreateMailVerificationRegister(UserRegisterUseCaseInput Input)

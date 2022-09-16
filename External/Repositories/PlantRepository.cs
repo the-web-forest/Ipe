@@ -132,4 +132,10 @@ public class PlantRepository : BaseRepository<Plant>, IPlantRepository
 
         return query;
     }
+
+    public Task RecoveryPlants(string NewUserId, string UserEmail)
+    {
+        UpdateDefinition<Plant> UpdateDefinition = Builders<Plant>.Update.Set(x => x.UserId, NewUserId);
+        return _collection.UpdateManyAsync(x => x.UserId == UserEmail, UpdateDefinition);
+    }
 }
