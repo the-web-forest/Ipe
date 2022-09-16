@@ -2,6 +2,7 @@
 
 namespace Ipe.Domain.Models
 {
+    [BsonIgnoreExtraElements]
     public class Plant : Model
     {
         [BsonElement("orderId")]

@@ -3,7 +3,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Ipe.Domain.Models
 {
-	public abstract class Model
+    [BsonIgnoreExtraElements]
+    public abstract class Model
 	{
 		[BsonId]
 		[BsonElement("_id")]

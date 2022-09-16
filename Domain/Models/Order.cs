@@ -2,6 +2,7 @@
 
 namespace Ipe.Domain.Models
 {
+    [BsonIgnoreExtraElements]
     public class Order : Model
     {
         [BsonElement("userId")]

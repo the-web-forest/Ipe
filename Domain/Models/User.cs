@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Ipe.Domain.Models
 {
+	[BsonIgnoreExtraElements]
 	public class User: Model
 	{
 		[BsonElement("name")]

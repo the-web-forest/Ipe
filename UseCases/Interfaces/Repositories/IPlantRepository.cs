@@ -7,4 +7,5 @@ public interface IPlantRepository : IBaseRepository<Plant>
     Task<Plant> FindSomePlantByUserId(string UserId);
     Task<Plant> GetPlantById(string PlantId);
     Task<PlantAndTotal> GetPlantByFilter(GetActivePlantUseCaseInput filter);
+    Task RecoveryPlants(string NewUserId, string UserEmail);
 }

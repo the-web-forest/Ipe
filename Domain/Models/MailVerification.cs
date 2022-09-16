@@ -3,7 +3,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Ipe.Domain.Models
 {
-	public class MailVerification : Model
+    [BsonIgnoreExtraElements]
+    public class MailVerification : Model
 	{
 		[BsonElement("role")]
 		public string Role { get; set; }

@@ -7,6 +7,7 @@ using Ipe.UseCases.Login;
 using Ipe.UseCases.Interfaces.Services;
 using Ipe.External.Services.DTOs;
 using Ipe.UseCases.Register;
+using Ipe.UseCases.Interfaces.Repositories;
 
 namespace Ipe.UseCases.GoogleLogin
 {
@@ -16,16 +17,19 @@ namespace Ipe.UseCases.GoogleLogin
         private readonly IAuthService _authService;
         private readonly IUserRepository _userRepository;
         private readonly IGoogleService _googleService;
+        private readonly IPlantRepository _plantRepository;
 
         public GoogleLoginUseCase(
             IAuthService authService,
             IUserRepository userRepository,
-            IGoogleService googleService
+            IGoogleService googleService,
+            IPlantRepository plantRepository
         )
         {
             _authService = authService;
             _userRepository = userRepository;
             _googleService = googleService;
+            _plantRepository = plantRepository;
         }
 
         public async Task<LoginUseCaseOutput> Run(GoogleLoginUseCaseInput Input)
@@ -44,6 +48,7 @@ namespace Ipe.UseCases.GoogleLogin
             {
                 await CreateUser(GoogleUser);
                 User = await _userRepository.GetByEmail(GoogleUser.Email);
+                await RecoveryTrees(User);
             }
 
             if (User.EmailVerified is false)
@@ -61,6 +66,11 @@ namespace Ipe.UseCases.GoogleLogin
             ValidateUser(GoogleUser, User);
 
             return BuildResponse(User);
+        }
+
+        private async Task RecoveryTrees(User User)
+        {
+            await _plantRepository.RecoveryPlants(User.Id, User.Email);
         }
 
         private async Task CreateUser(GoogleUserResponse GoogleUser)
