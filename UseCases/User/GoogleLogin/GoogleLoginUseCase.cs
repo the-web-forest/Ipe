@@ -82,7 +82,8 @@ namespace Ipe.UseCases.GoogleLogin
                 Password = BCryptLib.HashPassword(new Random().Next().ToString()),
                 EmailVerified = true,
                 Origin = Origins.Google.ToString(),
-                Photo = GoogleUser.Picture
+                Photo = GoogleUser.Picture,
+                AllowNewsletter = true
             });
         }
 

@@ -39,7 +39,8 @@ namespace Ipe.UseCases.GetUserInfo
                 Name = User.Name,
                 Email = User.Email,
                 City = User.City,
-                State = User.State
+                State = User.State,
+                AllowNewsletter = User.AllowNewsletter
             };
         }
 
