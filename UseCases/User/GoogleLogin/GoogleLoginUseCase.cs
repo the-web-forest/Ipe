@@ -53,7 +53,7 @@ namespace Ipe.UseCases.GoogleLogin
 
             if (User.EmailVerified is false)
             {
-                await UpdateUserWithGoogleData(GoogleUser, User);
+                await UpdateUserWithGoogleData(User);
                 User = await _userRepository.GetByEmail(GoogleUser.Email);
             }
 
@@ -82,7 +82,8 @@ namespace Ipe.UseCases.GoogleLogin
                 Password = BCryptLib.HashPassword(new Random().Next().ToString()),
                 EmailVerified = true,
                 Origin = Origins.Google.ToString(),
-                Photo = GoogleUser.Picture
+                Photo = GoogleUser.Picture,
+                AllowNewsletter = true
             });
         }
 
@@ -119,7 +120,7 @@ namespace Ipe.UseCases.GoogleLogin
             };
         }
 
-        private async Task UpdateUserWithGoogleData(GoogleUserResponse GoogleUser, User User)
+        private async Task UpdateUserWithGoogleData(User User)
         {
             User.EmailVerified = true;
             User.Origin = Origins.Google.ToString();

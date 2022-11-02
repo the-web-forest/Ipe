@@ -29,6 +29,7 @@ namespace Ipe.UseCases.Update
             User.Name = Input.Name;
             User.City = Input.City;
             User.State = Input.State;
+            User.AllowNewsletter = Input.AllowNewsletter;
             return User;
         }
     }

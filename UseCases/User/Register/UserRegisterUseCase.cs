@@ -54,7 +54,8 @@ namespace Ipe.UseCases.Register
                 Name = Input.Name,
                 Password = BCryptLib.HashPassword(Input.Password),
                 EmailVerified = false,
-                Origin = Origins.WebForest.ToString()
+                Origin = Origins.WebForest.ToString(),
+                AllowNewsletter = Input.AllowNewsletter
             });
         }
 
