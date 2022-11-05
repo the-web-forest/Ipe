@@ -16,6 +16,9 @@ namespace Ipe.Controllers.User.DTOS
         [Required]
         [MaxLength(2)]
         public string State { get; set; }
+
+        [Required]
+        public bool AllowNewsletter { get; set; }
     }
 }
 

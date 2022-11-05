@@ -29,6 +29,9 @@ namespace Ipe.Domain.Models
 
         [BsonElement("origin")]
         public string Origin { get; set; }
+
+		[BsonElement("allowNewsletter")]
+		public bool AllowNewsletter { get; set; } = true;
     }
 }
 

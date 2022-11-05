@@ -120,7 +120,8 @@ public class UserController : Controller
             {
                 Name = UserRegisterInput.Name,
                 Email = UserRegisterInput.Email,
-                Password = UserRegisterInput.Password
+                Password = UserRegisterInput.Password,
+                AllowNewsletter = UserRegisterInput.AllowNewsletter
             });
 
             return new OkObjectResult(data);
@@ -147,7 +148,8 @@ public class UserController : Controller
                 Name = UserUpdateInput.Name,
                 State = UserUpdateInput.State,
                 City = UserUpdateInput.City,
-                Id = UserId
+                Id = UserId,
+                AllowNewsletter = UserUpdateInput.AllowNewsletter
             });
 
             return new OkObjectResult(data);
